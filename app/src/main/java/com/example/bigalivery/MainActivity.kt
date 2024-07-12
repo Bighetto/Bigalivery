@@ -7,6 +7,9 @@ import android.provider.CalendarContract.Colors
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -40,29 +43,34 @@ fun MyFirstComposeable(){
 
 }
 
+@Preview
 @Composable
-@Preview(
-    name = "newTestPreview",
-    showSystemUi = false,
-    uiMode = UI_MODE_NIGHT_YES
-)
-@Preview(
-    name = "newTextPreview",
-    showSystemUi = true
-)
-@Preview(
-    name = "TestePreview",
-    showBackground = true,
-    heightDp = 200,
-    widthDp = 300,
-    backgroundColor = 0XFFF2)
-fun MyFirstComposeblePreview(){
+private fun ColumnPreview() {
 
-    BigaliveryTheme {
-        Surface {
-            MyFirstComposeable()
-        }
+    Column {
+        Text(text = "Texto 1")
+        Text(text = "Texto 2")
     }
+}
 
+@Preview
+@Composable
+private fun RowPreview() {
 
+    Row {
+        Text(text = "Texto 1")
+        Text(text = "Texto 2")
+    }
+    
+}
+
+@Preview
+@Composable
+private fun BoxPreview() {
+
+    Box {
+        Text(text = "Texto 1")
+        Text(text = "Texto 2")
+    }
+    
 }
