@@ -13,20 +13,35 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Cyan
+import androidx.compose.ui.graphics.Color.Companion.DarkGray
+import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.bigalivery.ui.theme.BigaliveryTheme
+import com.example.bigalivery.ui.theme.Purple200
+import com.example.bigalivery.ui.theme.Purple40
+import com.example.bigalivery.ui.theme.Purple500
+import com.example.bigalivery.ui.theme.Purple700
+import com.example.bigalivery.ui.theme.Purple80
+import com.example.bigalivery.ui.theme.Teal200
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,14 +59,19 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun ProductItem() {
 
-        Column {
+        Column(modifier = Modifier.height(250.dp).width(200.dp)) {
             Box(modifier = Modifier
-                .height(50.dp)
-                .background(Color.Blue)
-                .width(50.dp))
+                .height(100.dp)
+                .background(brush = Brush.horizontalGradient(colors = listOf(Purple200, Teal200)))
+                .fillMaxWidth())
             Image(painter = painterResource(
                 id = R.drawable.ic_launcher_background),
-                contentDescription = "Imagem do Produto")
+                contentDescription = "Imagem do Produto",
+                Modifier.size(100.dp)
+                    .offset(x = 0.dp, y = -50.dp)
+                    .clip(shape = CircleShape)
+                    .align(Alignment.CenterHorizontally)//Centraliza por aqui ou pelo align x = 50.dp
+            )
             Text(text = "Texto 1")
             Text(text = ("Texto 2"))
         }
