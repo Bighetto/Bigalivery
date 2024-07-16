@@ -12,6 +12,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,8 +34,12 @@ import androidx.compose.ui.graphics.Color.Companion.Cyan
 import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.bigalivery.ui.theme.BigaliveryTheme
 import com.example.bigalivery.ui.theme.Purple200
 import com.example.bigalivery.ui.theme.Purple40
@@ -59,21 +64,40 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun ProductItem() {
 
-        Column(modifier = Modifier.height(250.dp).width(200.dp)) {
+        Column(modifier = Modifier
+            .height(250.dp)
+            .width(200.dp)) {
             Box(modifier = Modifier
                 .height(100.dp)
-                .background(brush = Brush.horizontalGradient(colors = listOf(Purple200, Teal200)))
-                .fillMaxWidth())
-            Image(painter = painterResource(
-                id = R.drawable.ic_launcher_background),
-                contentDescription = "Imagem do Produto",
-                Modifier.size(100.dp)
-                    .offset(x = 0.dp, y = -50.dp)
-                    .clip(shape = CircleShape)
-                    .align(Alignment.CenterHorizontally)//Centraliza por aqui ou pelo align x = 50.dp
-            )
-            Text(text = "Texto 1")
-            Text(text = ("Texto 2"))
+                .background(
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(Purple200, Teal200)))
+                .fillMaxWidth()){
+                Image(painter = painterResource(
+                    id = R.drawable.ic_launcher_background),
+                    contentDescription = "Imagem do Produto",
+                    Modifier
+                        .size(100.dp)
+                        .offset(y = 50.dp)
+                        .clip(shape = CircleShape)
+                        .align(Alignment.BottomCenter)
+                )
+            }
+            Spacer(modifier = Modifier.height(50.dp))
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(text = LoremIpsum(50).values.first(),
+                    fontSize = 18.sp, //o sp permite que aumente ou dimiua o texto conforme usuario
+                    fontWeight = FontWeight(700),
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(text = "14,99",
+                    Modifier.padding(top = 8.dp),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight(400),
+                )
+            }
+
         }
         
     }
