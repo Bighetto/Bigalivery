@@ -70,7 +70,6 @@ class MainActivity : ComponentActivity() {
                 .heightIn(250.dp, 300.dp)
                 .width(200.dp)) {
                     val imageHeight = 100.dp
-
                     Box(modifier = Modifier
                         .height(imageHeight)
                         .background(
